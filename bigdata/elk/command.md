@@ -37,3 +37,5 @@ PUT _cluster/settings
 
 [error][data][elasticsearch] [version_conflict_engine_exception]: [task:apm-telemetry-task]: version conflict, document already exists (current version [1])
 
+
+https://www.elastic.co/guide/en/elasticsearch/reference/7.10/index-mgmt.html
