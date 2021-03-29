@@ -41,3 +41,9 @@ https://docs.microsoft.com/zh-cn/windows/wsl/install-win10
 "buildkit": true
 }
 }
+
+minikube start  image-mirror-country='cn' --registry-mirror=https://registry.docker-cn.com  --memory=4096 
+--image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers
+
+
+kubectl create deployment hello-minikube --image=hello-world:latest
