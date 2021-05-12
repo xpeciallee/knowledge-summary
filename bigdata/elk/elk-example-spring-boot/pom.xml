@@ -49,6 +49,17 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>4e9e21dcb00d-releases</name>
+			<url>http://localhost:8081/artifactory/maven-deploy</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>4e9e21dcb00d-snapshots</name>
+			<url>http://localhost:8081/artifactory/maven-deploy</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>

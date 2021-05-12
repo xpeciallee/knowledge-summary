@@ -1,4 +1,4 @@
-package com.lyh.cucumber.stepDefinitions;
+package com.lyh.kafka.schema;
 
 
 public class Steps {

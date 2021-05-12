@@ -47,3 +47,4 @@ minikube start  image-mirror-country='cn' --registry-mirror=https://registry.doc
 
 
 kubectl create deployment hello-minikube --image=hello-world:latest
+docker run --name any-artifactory -d -v data_artifactory:/var/opt/jfrog/artifactory -p 8081:8081 -p 8082:8082 docker.bintray.io/jfrog/artifactory-oss
