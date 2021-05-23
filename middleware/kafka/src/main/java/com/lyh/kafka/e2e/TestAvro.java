@@ -36,11 +36,11 @@ public class TestAvro {
         String schemaRegistryUrl = parameterTool.getRequired("schema-registry-url");
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        FlinkKafkaConsumer<User> userStream = new FlinkKafkaConsumer<>("topic", ConfluentRegistryAvroDeserializationSchema.forSpecific(User.class, schemaRegistryUrl), config);
-        FlinkKafkaConsumer<User> userStream2 = new FlinkKafkaConsumer<>("topic", ConfluentRegistryAvroDeserializationSchema.forSpecific(User.class, schemaRegistryUrl), config);
+        FlinkKafkaConsumer<User> userStream = new FlinkKafkaConsumer<>("topic1", ConfluentRegistryAvroDeserializationSchema.forSpecific(User.class, schemaRegistryUrl), config);
+        FlinkKafkaConsumer<User> userStream2 = new FlinkKafkaConsumer<>("topic2", ConfluentRegistryAvroDeserializationSchema.forSpecific(User.class, schemaRegistryUrl), config);
 
         DataStreamSource<User> stream = env.addSource(userStream);
-        DataStreamSource<User> stream2 = env.addSource(userStream2);
+        DataStreamSource<User> stream2 = env.addSource(userStream2);//flag true/false
         SingleOutputStreamOperator<User> userSingleOutputStreamOperator = stream.keyBy(userSelector)
                 .process(new UserProcess())
                 .name("user Process 1")
