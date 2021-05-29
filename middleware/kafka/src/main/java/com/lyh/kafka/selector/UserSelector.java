@@ -8,6 +8,6 @@ public class UserSelector implements KeySelector<User,String> {
     public static OutputTag<String> PROCESSING=new OutputTag<String>("Process");
     @Override
     public String getKey(User user) throws Exception {
-        return "";
+        return (String) user.getName();
     }
 }

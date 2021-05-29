@@ -3,9 +3,6 @@ package com.lyh.kafka.e2e;
 import com.lyh.kafka.entity.User;
 import com.lyh.kafka.function.UserProcess;
 import com.lyh.kafka.selector.UserSelector;
-import org.apache.avro.specific.SpecificRecordBase;
-import org.apache.flink.api.common.functions.MapFunction;
-import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.formats.avro.registry.confluent.ConfluentRegistryAvroDeserializationSchema;
 import org.apache.flink.streaming.api.datastream.ConnectedStreams;
@@ -40,16 +37,10 @@ public class TestAvro {
         FlinkKafkaConsumer<User> userStream2 = new FlinkKafkaConsumer<>("topic2", ConfluentRegistryAvroDeserializationSchema.forSpecific(User.class, schemaRegistryUrl), config);
 
         DataStreamSource<User> stream = env.addSource(userStream);
-        DataStreamSource<User> stream2 = env.addSource(userStream2);//flag true/false
         SingleOutputStreamOperator<User> userSingleOutputStreamOperator = stream.keyBy(userSelector)
                 .process(new UserProcess())
                 .name("user Process 1")
                 .uid("user Process 1");
-        ConnectedStreams<String, User> stringUserConnectedStreams = userSingleOutputStreamOperator.getSideOutput(UserSelector.PROCESSING)
-                .connect(stream2)
-                .keyBy(null,
-                        new UserSelector());
-
         env.execute("Kafka Confluent Schema Registry AVRO Example");
     }
 }
