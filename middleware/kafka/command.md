@@ -3,6 +3,8 @@ https://www.jianshu.com/p/cd6f413d35b0
 URl: http://kafka.apache.org/quickstart
 Schema Introduction: https://www.cnblogs.com/a00ium/p/10853032.html
 https://blog.csdn.net/weixin_44575542/article/details/88594773
+
+docker run -p 8081:8081  -e  SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=PLAINTEXT://127.0.0.1:9092 -e SCHEMA_REGISTRY_LISTENERS=http://0.0.0.0:8081 -e SCHEMA_REGISTRY_DEBUG=true confluentinc/cp-schema-registry:latest
 #### STEP 1: GET KAFKA
 $ tar -xzf kafka_2.13-2.7.0.tgz
 $ cd kafka_2.13-2.7.0
