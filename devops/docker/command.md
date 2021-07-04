@@ -15,6 +15,16 @@ http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 
 yum install docker-ce docker-ce-cli containerd.io
 
+redis-cli.exe -h 124.70.142.137 -p 6379
+
+docker run -itd --name mysql-strive -p 3306:3306 -e MYSQL_ROOT_PASSWORD=strive123456
+
+docker run --name=strive_mysql -e MYSQL_DATABASE=databases -e MYSQL_USER=root -e MYSQL_PASSWORD=strive@123 -e MYSQL_ROOT_PASSWORD=strive@123 -v /home/mysql_home:/var/lib/mysql -d mysql:5.7
+docker run -itd --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7
+
+docker run -d -p 10240:8080 -p 10241:50000 -v /var/jenkins_mount:/var/jenkins_home -v /etc/localtime:/etc/localtime --name myjenkins jenkins/jenkins
+
+
 list docker-ce --showduplicates | sort -r
 
 systemctl start docker
