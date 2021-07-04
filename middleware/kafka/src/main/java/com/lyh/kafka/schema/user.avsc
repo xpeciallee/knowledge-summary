@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "User",
+  "namespace": "com.lyh.kafka.entity",
+  "fields": [
+    {
+      "name": "age",
+      "type": "int"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    }
+  ]
+}
