@@ -35,6 +35,17 @@ java -Xms20m -Xmn10M -XX:SurvivorRatio=2 -XX:+PrintGCDetails GCDemo
 java -XX:MetaspaceSize=10m -XX:MaxMetaspaceSize=50m -XX:+PrintGCDetails GCDemo
 从上面的执行结果可以看到，Metaspace 空间的大小为 2.6M 左右，并不是我们设置的 10M。那是因为 MetaspaceSize 设置的是元空间发生 GC 的初始阈值。
 当达到这个值时，元空间发生 GC 操作，这个值默认是 20.8M。
+
+Direct ByteBuffer（直接内存）内存大小设置
+-XX:MaxDirectMemorySize
+此参数的含义是当Direct ByteBuffer分配的堆外内存到达指定大小后，即触发Full GC。注意该值是有上限的，默认是64M，最大为sun.misc.VM.maxDirectMemory()，在程序中中可以获得-XX:MaxDirectMemorySize的设置的值。
+使用NIO可以api可以使用直接内存。
+
+设置新生代代对象进入老年代的年龄
+-XX:MaxTenuringThreshold=15
+设置垃圾最大年龄。如果设置为0的话，则新生代对象不经过Survivor区，直接进入老年代。对于老年代比较多的应用，可以提高效率。如果将此值设置为一个较大值，则新生代对象会在Survivor区进行多次复制，这样可以增加对象再新生代的存活时间，增加在新生代即被回收的概论。
+
+
 而 MaxMetaspaceSize 则是设置元空间的最大大小，
 默认基本是机器的物理内存大小。虽然可以不设置，
 但还是建议设置一下，因为如果一直不断膨胀，那么 JVM 进程可能会被 OS kill 掉。
