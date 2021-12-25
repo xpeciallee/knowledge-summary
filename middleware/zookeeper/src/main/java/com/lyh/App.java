@@ -17,7 +17,7 @@ public class App {
     @Bean
     public CuratorFramework client() {
         CuratorFramework client = CuratorFrameworkFactory.builder()
-                .connectString("1.116.113.7:2181")
+                .connectString("localhost:2181")
                 .retryPolicy(new ExponentialBackoffRetry(1000, 3)).build();
         client.start();
         return client;
