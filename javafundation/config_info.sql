@@ -74,3 +74,7 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_SSMA_SOURCE', @value=N'nacos.config_info' , @level0type=N'SCHEMA',@level0name=N'nacos', @level1type=N'TABLE',@level1name=N'config_info'
 GO
 
+INSERT INTO nacos.users (username, password, enabled) VALUES ('nacos', '$2a$10$EuWPZHzz32dJN7jexM34MOeYirDdFAZm2kuWj7VEOJhhZkDrxfvUu', 1);
+
+INSERT INTO nacos.roles (username, role) VALUES ('nacos', 'ROLE_ADMIN');
+

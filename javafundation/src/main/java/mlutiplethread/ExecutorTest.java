@@ -14,7 +14,7 @@ public class ExecutorTest {
         Executors.newScheduledThreadPool(1);
         Executors.newWorkStealingPool(1);*/
         String driverName="com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String dbURL="jdbc:sqlserver://localhost:1433;DatabaseName=master";
+        String dbURL="jdbc:sqlserver://localhost:1433;DatabaseName=nacos";
         String userName="sa";
         String userPwd="xpeciallee";
         try
