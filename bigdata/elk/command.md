@@ -40,3 +40,160 @@ PUT _cluster/settings
 
 
 https://www.elastic.co/guide/en/elasticsearch/reference/7.10/index-mgmt.html
+
+
+```
+GET /
+
+PUT personinfo
+{
+    "settings": {
+        "number_of_shards": 1,
+        "number_of_replicas": 0
+      }
+}
+
+GET personinfo
+
+GET *
+
+#添加数据 会随机分配uuid
+POST /personinfo/_doc/
+{
+    "title":"手机",
+    "images":"http://image.jj.com/12479122.jpg",
+    "price":2999.00
+}
+
+#自定义id
+POST /personinfo/_doc/5
+{
+    "title":"华为手机",
+    "images":"http://image.jj.com/12479122.jpg",
+    "price":3999.00
+}
+
+#加副标题
+POST /personinfo/_doc/6
+{
+    "title":"华为电视",
+    "subTitle":"小米合作出品",
+    "images":"http://image.jj.com/12479122.jpg",
+    "price":1999.00
+}
+
+POST /personinfo/_doc/7
+{
+    "title":"OPPO手机",
+    "subTitle":"华为合作出品",
+    "images":"http://image.jj.com/12479122.jpg",
+    "price":1899.00
+}
+
+#删除
+DELETE /personinfo/_doc/SiUfxn8BPNLWx2z2U1xk
+
+
+#查询全部
+GET personinfo/_search
+{
+    "query":{
+        "match_all":{}
+    }
+}
+
+
+```
+
+
+```
+{
+  "took" : 602,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 6,
+      "relation" : "eq"
+    },
+    "max_score" : 1.0,
+    "hits" : [
+      {
+        "_index" : "personinfo",
+        "_type" : "_doc",
+        "_id" : "SiUfxn8BPNLWx2z2U1xk",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "手机",
+          "images" : "http://image.jj.com/12479122.jpg",
+          "price" : 2999.0
+        }
+      },
+      {
+        "_index" : "personinfo",
+        "_type" : "_doc",
+        "_id" : "5",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "华为手机",
+          "images" : "http://image.jj.com/12479122.jpg",
+          "price" : 3999.0
+        }
+      },
+      {
+        "_index" : "personinfo",
+        "_type" : "_doc",
+        "_id" : "7",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "OPPO手机",
+          "subTitle" : "华为合作出品",
+          "images" : "http://image.jj.com/12479122.jpg",
+          "price" : 1899.0
+        }
+      },
+      {
+        "_index" : "personinfo",
+        "_type" : "_doc",
+        "_id" : "6",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "华为电视",
+          "subTitle" : "小米合作出品",
+          "images" : "http://image.jj.com/12479122.jpg",
+          "price" : 1999.0
+        }
+      },
+      {
+        "_index" : "personinfo",
+        "_type" : "_doc",
+        "_id" : "SyUkxn8BPNLWx2z211wM",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "手机",
+          "images" : "http://image.jj.com/12479122.jpg",
+          "price" : 2999.0
+        }
+      },
+      {
+        "_index" : "personinfo",
+        "_type" : "_doc",
+        "_id" : "TCUkxn8BPNLWx2z25lyl",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "手机",
+          "images" : "http://image.jj.com/12479122.jpg",
+          "price" : 2999.0
+        }
+      }
+    ]
+  }
+}
+
+
+```
