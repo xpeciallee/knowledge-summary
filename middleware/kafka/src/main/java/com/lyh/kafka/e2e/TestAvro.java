@@ -1,3 +1,4 @@
+/*
 package com.lyh.kafka.e2e;
 
 import com.lyh.kafka.entity.User;
@@ -19,14 +20,14 @@ public class TestAvro {
         // parse input arguments
         final ParameterTool parameterTool = ParameterTool.fromArgs(args);
         UserSelector userSelector = new UserSelector();
-        if (parameterTool.getNumberOfParameters() < 6) {
-            System.out.println(
-                    "Missing parameters!\n"
-                            + "Usage: Kafka --input-topic <topic> --output-string-topic <topic> --output-avro-topic <topic> "
-                            + "--bootstrap.servers <kafka brokers> "
-                            + "--schema-registry-url <confluent schema registry> --group.id <some id>");
-            return;
-        }
+//        if (parameterTool.getNumberOfParameters() < 6) {
+//            System.out.println(
+//                    "Missing parameters!\n"
+//                            + "Usage: Kafka --input-topic <topic> --output-string-topic <topic> --output-avro-topic <topic> "
+//                            + "--bootstrap.servers <kafka brokers> "
+//                            + "--schema-registry-url <confluent schema registry> --group.id <some id>");
+//            return;
+//        }
         Properties config = new Properties();
         config.setProperty("bootstrap.servers", parameterTool.getRequired("bootstrap.servers"));
         config.setProperty("group.id", parameterTool.getRequired("group.id"));
@@ -44,3 +45,4 @@ public class TestAvro {
         env.execute("Kafka Confluent Schema Registry AVRO Example");
     }
 }
+*/

@@ -27,6 +27,7 @@ $ bin/kafka-topics.sh --describe --topic quickstart-events --bootstrap-server lo
 #### STEP 4: WRITE SOME EVENTS INTO THE TOPIC
 $ bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092
 $ bin\windows\kafka-console-producer.bat --topic first-event --broker-list localhost:9092
+  bin\windows\kafka-console-producer.bat --topic user-event --broker-list localhost:9092
 
 
 #### STEP 5: READ THE EVENTS

@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "Payment",
+  "namespace": "com.lyh.kafka.e2e",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "id",
+      "type": "int"
+    }
+  ]
+}

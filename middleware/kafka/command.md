@@ -36,3 +36,4 @@ $ bin\windows\kafka-console-consumer.bat --topic user-event --from-beginning  --
 
 ![img.png](img.png)
 https://data-flair.training/blogs/kafka-use-cases-applications/
+
